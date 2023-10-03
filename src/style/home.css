@@ -1,0 +1,25 @@
+.news-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    row-gap: 5px;
+    column-gap: 5px;
+}
+
+
+.heading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: white;
+    background: black;
+    
+}
+
+
+
