@@ -1,6 +1,8 @@
+*{
+    margin: 0;
+}
 .news-card{
     display: flex;
-    /* align-items: center; */
     justify-content: space-around;
     flex-wrap: wrap;
     row-gap: 5px;
@@ -30,6 +32,7 @@
 }
 .select-news button{
     color: white; 
+    font-weight: bold;
     padding: 10px;
     border-radius: 10px;
     background: black;
@@ -38,8 +41,8 @@
 .select-news #newsType{
     appearance: none;
   background-color: transparent;
-  border: 2px ssolid black;
-  border-radius: 5px;
+  border: 2px solid black;
+  border-radius: 15px;
   padding: 0 1em 0 0;
   margin:0 10px 0 10px;
   width: 50%;
@@ -47,5 +50,8 @@
   font-size: inherit;
   cursor: inherit;
   line-height: inherit;
-
+    padding: 5px;
 }
+
+
+
