@@ -4,24 +4,22 @@ import '../style/home.css'
 // import Loader from './Loader';
 
 function NewsComponent() {
-  const [newsType, setNewsType] = useState('everything')
+  const [newsType, setNewsType] = useState('top')
   const [newsData, setNewsData] = useState([]);
   // const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
 
   useEffect(() => {
-    // Define the API URL with your API key and query
     fetchNews();
   }
     , []);
 
   const apiKey = 'pub_30159d22118cea42f6deddcf5f353e3b31956';
-  //const query = 'everything';
   const fetchNews = () => {
-    const apiUrl = `https://newsdata.io/api/1/news?apikey=${apiKey}&q=${newsType}`;
+    const apiUrl = `https://newsdata.io/api/1/news?apikey=${apiKey}&language=en&category=${newsType}`;
+    
 
-    // Use the fetch API to make a GET request to the Newsdata.io API
 
     fetch(apiUrl)
       .then((response) => {
@@ -31,12 +29,12 @@ function NewsComponent() {
         return response.json();
       })
       .then((responseData) => {
-        setNewsData(responseData.results); // Update the newsData state with the fetched data
+        setNewsData(responseData.results); 
         // setLoading(false); // Set loading to false since the request is complete
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
-        // setLoading(false); // Set loading to false in case of an error
+        // setLoading(false); 
       });
   }
 
@@ -48,9 +46,15 @@ function NewsComponent() {
       <div className='select-news'>
         <label>Select type of news:</label>
         <select id='newsType' value={newsType} onChange={(e) => setNewsType(e.target.value)}>
-          <option id='business'>Business</option>
-          <option id='enternatinement'>Entertainment</option>
           <option id='top'>Top</option>
+          <option id='general'>General</option>
+          <option id='health'>Health</option>
+          <option id='business'>Business</option>
+          <option id='science'>Science</option>
+          <option id='enternatinement'>Entertainment</option>
+          <option id='sports'>Sports</option>
+          <option id='technology'>Technology</option>
+          <option id='politics'>Politics</option>
         </select>
         <button onClick={fetchNews}>fetch News</button>
       </div>
@@ -59,7 +63,7 @@ function NewsComponent() {
       <div className='news-card'>
 
         {newsData.map((article) => (
-          <Card key={article.article_id} title={article.title} description={article.description} link={article.link} image_url={article.image_url} />
+          <Card key={article.article_id} title={article.title} link={article.link} image_url={article.image_url} />
         ))}
 
       </div>
